@@ -278,7 +278,7 @@ hr.small {
 /* Map */
 
 .map {
-    height: 900px;
+    height: 600px;
 }
 
 @media(max-width:768px) {
