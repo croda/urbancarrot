@@ -215,6 +215,7 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    
 }
 
 /* About */
@@ -385,4 +386,26 @@ footer img {
   position: fixed;
   bottom: 5px;
   right: 5px;
+}
+
+.app-mockup {
+    width: 100%
+}
+
+.app-desc {
+    font-size: 1.35rem;
+}
+
+.app-desc h1{
+    font-size: 2.5rem;
+    padding: 15px;
+}
+
+.app-desc p{
+    font-size: 1.35rem;
+    text-align: left;
+}
+
+.google-dl {
+    width: 50%;
 }
