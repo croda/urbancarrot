@@ -111,7 +111,7 @@ hr.small {
     font-size: 3.5rem;
     vertical-align: middle;
     color: white;
-}
+    }
 }
 
 /* Side Menu */
@@ -215,6 +215,13 @@ hr.small {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
+    /*parallax*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    vertical-align: middle;
     
 }
 
@@ -290,6 +297,15 @@ hr.small {
         width: 20px;
         margin-right: 5px;
     }
+
+    .fix-bootstrap {
+        width: inherit;
+    }
+
+ .app-desc p{
+
+    text-align: center;
+}
 }
 
 .map iframe {
@@ -408,4 +424,11 @@ footer img {
 
 .google-dl {
     width: 50%;
+}
+
+@media(max-width:768px) {
+
+ .app-desc p {
+
+    text-align: center;
 }
