@@ -494,3 +494,14 @@ hr.small {
     width: 50%;
 }
 
+.readmore-container strong {
+    font-size: 20px;
+}
+
+.dvaeset {
+    font-size: 20px;
+}
+
+.app-desc ul {
+    line-height: 32px;
+}
