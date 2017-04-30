@@ -12,6 +12,11 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: #a9d899;
+  text-decoration: none;
+}
+
 /* -------------------------------- 
 
 Main Components 
