@@ -111,44 +111,55 @@
                     <hr class="small">
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
-                             <div class="service-item">
-                                <img class="problem-img" src="img/riptrees_o.png"
+                             <div class="service-item">   
+                                <img class="problem-img" src="img/riptrees_o.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Decrease of tree structures</strong>
                                 </h4>
-                                <p>Vegetation is lost as more surfaces are being paved or covered by pavement and buildings</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Vegetation is lost as more surfaces are being paved or covered by pavement and buildings
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings2
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings2
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings2
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings2
+                                Vegetation is lost as more surfaces are being paved or covered by pavement and buildings2</p>
+                                </article>
                             </div>
+
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/smartcities_o.png"
+                                <img class="problem-img" src="img/smartcities_o.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Anthropogenic Heat </strong>
                                 </h4>
                                 <p>Heat produced by human activates by totaling the energy for heating, cooling, running appliances, transport etc.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
                         </div>
                                   <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/brick.png"
+                                <img class="problem-img" src="img/brick.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Proeperties of Urban Materials </strong>
                                 </h4>
                                 <p>The emission, reflection, heat capacity and absorption of sun’s energy from surface materials on buildings.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
                         </div>
 
                                <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/town.png"
+                                <img class="problem-img" src="img/town.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Urban Geometry</strong>
                                 </h4>
                                 <p>- The dimensions and spacing of buildings within a city that influence wind flow, energy absorption and a surface radiation.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
                         </div>
 
@@ -174,46 +185,51 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <h2>Consequences</h2>
                     <hr class="small">
-                    <div class="row">
+                    <div class="row">                     
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/stekjer.png"
+                                <img class="problem-img" src="img/stekjer.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Energy Consumption  </strong>
                                 </h4>
                                 <p>High energy demands for cooling and adds pressure on electricity grid during period of demand.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/pollution.png"
+                                <img class="problem-img" src="img/pollution.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Air Quality &amp; Greenhouse gasses</strong>
                                 </h4>
                                 <p>Increasing the energy demands lead to higher levels of air pollution and GHG emissions, also warmer air accelerates chemical reactions that produce ground-level ozone, or smog.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/plus.png"
+                                <img class="problem-img" src="img/plus.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Human Health &amp;Comfort</strong>
                                 </h4>
                                 <p>which can cause breathing problems, heat cramps, and heat stroke, and may lead to illness or even death in different age groups.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                </article>
                             </div>
+                           
 
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
-                                <img class="problem-img" src="img/kapka.png"
+                                <img class="problem-img" src="img/kapka.png">
+                                <article class="readmore-container">
                                 <h4>
                                     <strong>Water Quality  </strong>
                                 </h4>
                                 <p>Water temperature affects all aspects of aquatic life, especially the metabolism and reproduction of many aquatic species.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                    </article>
                             </div>
 
                         </div>
@@ -501,11 +517,18 @@
     <script src="js/jquery.js"></script>
     <script src="js/parallax.js"></script>
     <script src="js/timeline.js"></script>
+    <script src="node_modules/readmore-js/readmore.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>
+
+    $('.readmore-container').readmore({
+            speed: 75,
+            collapsedHeight: 100,
+            lessLink: '<a href="#">Read less</a>'
+    });
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
