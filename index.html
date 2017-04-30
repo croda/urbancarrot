@@ -11,6 +11,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="leaflet.css"/>
 
     <!-- Custom CSS --> 
     <link href="css/timeline.css" rel="stylesheet">
@@ -90,9 +91,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1>What? </h1>
-                    <p class="lead">Urban heat island is a phenomenon that refers to urban and suburban areas which have a higher temperature than their surroundings. As cities are growing, more green surface is being replaced by concrete buildings (and asphalt roads).<br/><br/> 
-    Our goal is to inform the community and engage it in the process of re-greening our environment. 
+                    <h1>Urban heat island </h1>
+                    <br/>
+                    <p class="lead">The term "heat island" describes built up areas that are hotter than nearby rural areas. The annual mean air temperature of a city with 1 million people or more can be 1.8–5.4°F (1–3°C) warmer than its surroundings and in the evening, the difference can be as high as 22°F (12°C). Heat islands affect have negative effects on our health and comfort, water quality, energy consumtpion and costs. <br/>
+
 </p>
                 </div>
             </div>
@@ -182,8 +184,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h1>Mapa</h1>
-                    <p class="lead">Urban heat island is a phenomenon that refers to urban and suburban areas which have a higher temperature than their surroundings. As cities are growing, more green surface is being replaced by concrete buildings (and asphalt roads).<br/><br/> 
+                    <h1>Help us locate and identify the problems</h1>
+                    <p class="lead">Help us locate the areas with least green surfaces and highest temperature and/or pollution.
+                    Help us identify patterns and correlation<br/><br/> 
     Our goal is to inform the community and engage it in the process of re-greening our environment. 
 </p>
                 </div>
@@ -194,11 +197,7 @@
     </section>
     <!-- Map -->
     <section id="contact" class="map">
-   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.9738910651226!2d21.38618561590239!3d42.000835879212595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354146b8359edd7%3A0xc2fe0a8b1a258b46!2sNewMan&#39;s+Business+Accelerator!5e0!3m2!1sen!2s!4v1493415226532" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <br />
-        <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
+   <div id="map"></div>
     </section>
 
     <section id="consequences" class="services bg-primary">
@@ -280,7 +279,7 @@
     
     <aside class="green">
         <div class="text-vertical-center">
-            <h1>A scene like this wouldn't be possible without your help!</h1>
+            <h1>To make lasting changes in a communty we have to get everyone involved</h1>
         </div>
     </aside>
     <section id="solutions" class="services bg-primary">
@@ -415,12 +414,13 @@
                             </div>
                             <div class="fix-bootstrap col-md-6 col-sm-6">
                             <div class="service-item app-desc">
-                               <h1>Our App</h1>
+                               <h1>GET INVOLVED!</h1>
+                               <h4>Download our app</h4>
                                <p class="centerstrap">
-                               <ul><li>- Map trees and pin them on our map.</li>
-                               <li>-   Check climate information on our map.</li>
-                               <li>-   Use our ideas and add your own to regreenify your surrounding.</li>
-                               <li>-   Ako napravivte nesto novo dodadete.</li>
+                               <ul><li>Help us map and identifty every tree in your city </li>
+                               <li>Explore and earn something new about the environment every day</li>
+                               <li>Engage in an active re-greening community in your area!</li>
+                               
                                </ul>
                             </div>
                             
@@ -433,20 +433,7 @@
                         </div>
     </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h1>What? </h1>
-                    <p class="lead">Urban heat island is a phenomenon that refers to urban and suburban areas which have a higher temperature than their surroundings. As cities are growing, more green surface is being replaced by concrete buildings (and asphalt roads).<br/><br/> 
-    Our goal is to inform the community and engage it in the process of re-greening our environment. 
-</p>
-                </div>
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
+    
 
     <!-- Footer -->
 <footer class="footer-distributed">
@@ -468,6 +455,8 @@
     <script src="js/parallax.js"></script>
     <script src="js/timeline.js"></script>
     <script src="js/readmore.min.js"></script>
+      <script src="leaflet.js"></script>
+  <script src="leaflet-heat.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
@@ -550,6 +539,147 @@
         }
         // Enable map zooming with mouse scroll when the user clicks the map
     $('.map').on('click', onMapClickHandler);
+    //---------------------------
+//trees
+  var mymap = L.map('map').setView([41.9867, 21.44631], 13);
+  //var mymap = L.map('map').setView([41.997502, 21.427023], 17);
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(mymap);
+
+    ///tree pins
+  var greenIcon = L.icon({
+    iconUrl: "./tree1.png",
+    iconSize:[25, 50], // size of the icon
+    iconAnchor: [22, 94] // point of the icon which will correspond to marker's location
+  });
+
+var trees = [
+
+  //gologanov
+  L.marker([41.99743, 21.39682], {icon: greenIcon}),
+  L.marker([41.99742, 21.3970], {icon: greenIcon}),
+
+  L.marker([41.99757, 21.39496], {icon: greenIcon}),
+  L.marker([41.99728, 21.39713], {icon: greenIcon}),
+
+  //bul k ohridski
+  L.marker([  41.99672, 21.42777], {icon: greenIcon}),
+  L.marker([ 41.9967, 21.42778], {icon: greenIcon}),
+  L.marker([ 41.9968, 21.42779], {icon: greenIcon}),
+  L.marker([ 41.9969, 21.42779], {icon: greenIcon}),
+  L.marker([ 41.9970, 21.42779], {icon: greenIcon}),
+
+        //davor
+  L.marker([ 41.99683, 21.42771], {icon: greenIcon}),
+  L.marker([ 41.99681, 21.42773], {icon: greenIcon}),
+  L.marker([ 41.99678, 21.42775], {icon: greenIcon}),
+  L.marker([ 41.99681, 21.42772], {icon: greenIcon}),
+  L.marker([ 41.99678, 21.42774], {icon: greenIcon}),
+  L.marker([ 41.99664, 21.42773], {icon: greenIcon}),
+  L.marker([ 41.99655, 21.42775], {icon: greenIcon}),
+  L.marker([ 41.99665, 21.42771], {icon: greenIcon}),
+  L.marker([ 41.99609, 21.42772], {icon: greenIcon}),
+  L.marker([ 41.99655, 21.42768], {icon: greenIcon}),
+  L.marker([ 41.99614, 21.4277], {icon: greenIcon}),
+  L.marker([ 41.99597, 21.42772], {icon: greenIcon}),
+  L.marker([ 41.99659, 21.42767], {icon: greenIcon}),
+  L.marker([ 41.99603, 21.42769], {icon: greenIcon}),
+  L.marker([ 41.99594, 21.42763], {icon: greenIcon}),
+  L.marker([ 41.99605, 21.42772], {icon: greenIcon}),
+  L.marker([ 41.99599, 21.42767], {icon: greenIcon}),
+  L.marker([ 41.99599, 21.42773], {icon: greenIcon}),
+  L.marker([ 41.99585, 21.42765], {icon: greenIcon}),
+  L.marker([ 41.99569, 21.42769], {icon: greenIcon}),
+  L.marker([ 41.9966, 21.42766], {icon: greenIcon}),
+  L.marker([ 41.99666, 21.42773], {icon: greenIcon}),
+  L.marker([ 41.99596, 21.42773], {icon: greenIcon}),
+  L.marker([ 41.9964, 21.42529], {icon: greenIcon}),
+  L.marker([ 41.99628, 21.42524], {icon: greenIcon}),
+  L.marker([ 41.99582, 21.42519], {icon: greenIcon}),
+  L.marker([ 41.99545, 21.42592], {icon: greenIcon}),
+  L.marker([ 41.99704, 21.42542], {icon: greenIcon}),
+  L.marker([ 41.99575, 21.42766], {icon: greenIcon}),
+  L.marker([ 41.9955, 21.42765], {icon: greenIcon}),
+  L.marker([ 41.9954, 21.42768], {icon: greenIcon}),
+  L.marker([ 41.9973, 21.42755], {icon: greenIcon}),
+  L.marker([ 41.99547, 21.42635], {icon: greenIcon}),
+  L.marker([ 41.99557, 21.42523], {icon: greenIcon}),
+  L.marker([ 41.99537, 21.42774], {icon: greenIcon}),
+  L.marker([ 41.99765, 21.42549], {icon: greenIcon}),
+  L.marker([ 41.99657, 21.42775], {icon: greenIcon}),
+
+
+  //merni stanici try later to fix this
+  //L.marker([42.00269, 21.42316])
+];
+  var tree1Layer = L.layerGroup(trees).addTo(mymap);
+
+//heatmap
+
+var heat = L.heatLayer([
+        [42.00269, 21.42316],
+        [41.998975, 21.389450],
+        [42.003768,21.394638],
+        [42.003309,21.408075],
+        [41.987726,21.456481],
+        [42.003768,21.394638],
+        [41.995238146587674,21.402708292007443],
+        [41.987726,21.456481]],{radius: 80}).addTo(mymap);
+
+
+
+var polygonTaftalidze = L.polygon([
+  [41.98892, 21.3888],
+  [41.9955, 21.35979],
+  [42.00914, 21.37285],
+  [42.0002, 21.39926]
+]).setStyle({fillColor: '#668F00', fillOpacity: 0.6,color: '#668F00'}).addTo(mymap);
+
+
+var polygonKarpos3 = L.polygon([
+  [42.00914, 21.37285],
+  [42.0002, 21.39926],
+  [42.01066, 21.40278],
+   [42.0187, 21.38574]
+]).setStyle({fillColor: '#A57A00', fillOpacity: 0.6,color: '#A57A00'}).addTo(mymap);
+var polygonKarpos2 = L.polygon([
+  [42.00021, 21.39926],
+  [41.99835, 21.41471],
+  [42.00884, 21.42034],
+  [42.01066, 21.40278]
+]).setStyle({fillColor: '#A59800', fillOpacity: 0.6,color: '#A59800'}).addTo(mymap);
+var polygonKapistec = L.polygon([
+[41.98292, 21.4081],
+[41.98892, 21.38881],
+[42.0002, 21.39926],
+[41.99834, 21.41471]
+]).setStyle({fillColor: '#F64E00', fillOpacity: 0.6,color: '#F64E00'}).addTo(mymap);
+
+var polygonCentar = L.polygon([
+[41.97456, 21.42427],
+[41.98292, 21.40809],
+[41.99834, 21.41471],
+[42.00884, 21.42034],
+[42.00432, 21.44415]
+]).setStyle({fillColor: '#6C9000', fillOpacity: 0.6,color: '#6C9000'}).addTo(mymap);
+
+var polygonAerodrom = L.polygon([
+[41.97456, 21.42427],
+[42.00432, 21.44415],
+[41.99474, 21.51068],
+[41.98147, 21.51995],
+[41.94371, 21.5043],
+[41.96296, 21.4312]
+]).setStyle({fillColor: '#F64E00', fillOpacity: 0.6,color: '#F64E00'}).addTo(mymap);
+
+  //samo za zemanje koordinati
+/*
+  mymap.on('click', function(e) {
+    alert(e.latlng);
+  });
+*/
     </script>
 
 </body>
